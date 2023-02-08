@@ -31,6 +31,13 @@ const orderSchema = new mongoose.Schema(
         googleAddressId: String,
       },
     },
+    contactDetails: {
+      phoneNumber: { type: Number, required: true, unique: true },
+      whatsappNumber: { type: Number },
+      telegramNumber: { type: Number },
+      iMessageNumber: { type: Number },
+      email: { type: String, required: true, unique: true },
+    },
     paymentMethod: { type: String, required: true },
     paymentResult: {
       id: String,
@@ -42,7 +49,7 @@ const orderSchema = new mongoose.Schema(
     shippingPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     isPaid: { type: Boolean, default: false },
     paidAt: { type: Date },
     isRead: { type: Boolean, default: false },

@@ -11,16 +11,18 @@ export const generateToken = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: '30d',
+      expiresIn: '30y',
     }
   );
 };
 
 export const isAuth = (req, res, next) => {
+  console.log('in side the is auth', res);
   const authorization = req.headers.authorization;
   if (authorization) {
-
+    console.log(authorization);
     const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
+    console.log('token in auth:', token);
     jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err) {
         res.status(401).send({ message: 'Invalid Token' });
@@ -35,14 +37,25 @@ export const isAuth = (req, res, next) => {
 };
 
 export const isAdmin = (req, res, next) => {
-  
   if (req.user && req.user.isAdmin) {
-
     next();
   } else {
     res.status(401).send({ message: 'Invalid Admin Token' });
   }
 };
+
+// async function test() {
+//   isAuth(
+//     {
+//       headers: {
+//         authorization: `BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI5OTk5OTk5OTk5IiwibmFtZSI6ImxvZ291dFVzZXIiLCJlbWFpbCI6ImxvZ291dFVzZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3NTg2ODk5NywiZXhwIjoyNjIyNTk2OTk3fQ.qBZzML_u3zpoSuJwMNFjTAafVL1Ufcrbu4JvHQVMQ3I`,
+//       },
+//     },
+//     setres()
+//   );
+// }
+
+// test();
 
 export const mailgun = () =>
   mg({
