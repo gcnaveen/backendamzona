@@ -44,19 +44,6 @@ export const isAdmin = (req, res, next) => {
   }
 };
 
-// async function test() {
-//   isAuth(
-//     {
-//       headers: {
-//         authorization: `BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI5OTk5OTk5OTk5IiwibmFtZSI6ImxvZ291dFVzZXIiLCJlbWFpbCI6ImxvZ291dFVzZXJAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY3NTg2ODk5NywiZXhwIjoyNjIyNTk2OTk3fQ.qBZzML_u3zpoSuJwMNFjTAafVL1Ufcrbu4JvHQVMQ3I`,
-//       },
-//     },
-//     setres()
-//   );
-// }
-
-// test();
-
 export const mailgun = () =>
   mg({
     apiKey: process.env.MAILGUN_API_KEY,

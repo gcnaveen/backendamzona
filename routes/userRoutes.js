@@ -153,7 +153,10 @@ userRouter.post(
           _id: user._id,
           name: user.name,
           email: user.email,
-          phone: user.phone,
+          phoneNo: user.phoneNo,
+          whatsapp: user.whatsapp,
+          telegram: user.telegram,
+          iMessage: user.iMessage,
           isAdmin: user.isAdmin,
           token: generateToken(user),
         });
@@ -170,8 +173,11 @@ userRouter.post(
     const newUser = new User({
       name: req.body.name,
       email: req.body.email,
-      phone: req.body.phone,
+      phoneNo: req.body.phoneNo,
       password: bcrypt.hashSync(req.body.password),
+      whatsapp: req.body.whatsapp,
+      telegram: req.body.telegram,
+      imessage: req.body.imessage,
     });
     // console.log('in side the signup:::', newUser);
     const user = await newUser.save();
@@ -179,7 +185,10 @@ userRouter.post(
       _id: user._id,
       name: user.name,
       email: user.email,
-      phone: user.phone,
+      phoneNo: user.phoneNo,
+      whatsapp: user.whatsapp,
+      telegram: user.telegram,
+      imessage: user.imessage,
       userRegistered: user.userRegistered,
       isAdmin: user.isAdmin,
       token: generateToken(user),
