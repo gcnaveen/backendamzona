@@ -159,6 +159,20 @@ productRouter.get('/', async (req, res) => {
   const products = await Product.find();
   res.send(products);
 });
+
+productRouter.get('/bestseller', async (req, res) => {
+  const prods = await Product.find({ rating: { $gt: 2 } });
+  res.send(prods);
+});
+
+// productRouter.get('/dealoftheday', async (req, res) => {
+//   const prods = await Product.find({
+//     $reduce:{
+//       input:'productDiscountedPrice',initialValue:0,
+//       in:{$}
+//     productDiscountedPrice/price*100) : {$gt:'15%'}});
+// });
+
 productRouter.get('/blackfridaysale', async (req, res) => {
   const products = await Product.find({ blackFridaySale: true });
   res.send(products);
