@@ -26,6 +26,7 @@ const productSchema = new mongoose.Schema(
     },
     subCategory: { type: String },
     description: { type: String, required: true },
+    additionalInfo: { type: String},
     price: { type: Number, required: true },
     countInStock: { type: Number, required: true },
     productDiscountedPrice: { type: Number, required: true },
