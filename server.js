@@ -7,8 +7,14 @@ import userRouter from './routes/userRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
 import uploadRouter from './routes/uploadRoutes.js';
 import sliderRouter from './routes/sliderRouter.js';
-import dotenv from 'dotenv';
+import dotenv  from 'dotenv';
+dotenv.config();
+import cors from 'cors'
+import compression from 'compression';
+import {alloedDomains} from './config/index.js';
+import helmet from 'helmet'
 
+console.log('alloew',alloedDomains)
 dotenv.config();
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -20,6 +26,12 @@ mongoose
   });
 
 const app = express();
+
+app.use(cors({origin:alloedDomains}));
+app.use(helmet())
+app.use(compression());
+// app.use({Access-Control-Allow-Origin:'http://localhost:3000'})
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,8 +48,8 @@ app.get('/api/keys/google', (req, res) => {
 
 const __dirname = path.resolve();
 
-app.use(function (req, res) {
-  res.header('Access-Control-Allow-Origin', '*');
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*'); 
   res.header(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
