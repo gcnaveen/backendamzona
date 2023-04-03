@@ -5,7 +5,7 @@
 ### 1. Clone repo
 
 ```
-$ git clone https://github.com/basir/mern-amazona.git
+$ git clone https://github.com/gcnaveen/backendamzona.git
 ```
 
 ### 2. Create .env File
