@@ -112,6 +112,7 @@ productRouter.post(
       priceFor120Pills,
       priceFor180Pills,
       priceFor270Pills,
+      packageName,
       countInStock,
       productDiscountedPrice,
       categoryID,
@@ -148,6 +149,7 @@ productRouter.post(
         priceFor120Pills,
         priceFor180Pills,
         priceFor270Pills,
+        packageName,
         countInStock,
         productDiscountedPrice,
         rating,
@@ -258,6 +260,7 @@ productRouter.put(
       priceFor120Pills,
       priceFor180Pills,
       priceFor270Pills,
+      packageName
     } = req.body;
     // console.log("body",req.body)
     if (
@@ -313,6 +316,7 @@ productRouter.put(
           priceFor120Pills,
           priceFor180Pills,
           priceFor270Pills,
+          packageName
         }
       );
       res.status(200).send({ message: 'Product Updated' });

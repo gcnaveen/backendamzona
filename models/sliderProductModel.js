@@ -15,7 +15,7 @@ const categorySchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true },
   image: { type: String, required: true },
   images: [String],
-  price: { type: Number, required: true },
+  price: { type: Number },
   countInStock: { type: Number, required: true },
   productDiscountedPrice: { type: Number, required: true },
   numReviews: { type: Number, required: true },
